@@ -15,8 +15,8 @@ jobs:
 
     env:
       CI: true
-#      GITHUB_USER: romcalproject
-#      GITHUB_EMAIL: romcalproject@gmail.com
+      GITHUB_USER: github-actions
+      GITHUB_EMAIL: github-actions@github.com
 
     steps:
       - name: Git checkout dev branch
@@ -61,20 +61,12 @@ jobs:
 
       - name: Commit and tag the updated version
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ GITHUB_USER }}
+          git config user.email ${{ GITHUB_EMAIL }}
           git add .
           git commit -m "ci: bump version to ${{ steps.package.outputs.version }}"
           git push
 #          git tag -a v${{ steps.package.outputs.version }}
-
-#      - name: Commit and tag the updated version
-#        uses: EndBug/add-and-commit@v7
-#        with:
-#          message: 'ci: bump version to ${{ steps.package.outputs.version }}'
-#          tag: 'v${{ steps.package.outputs.version }}'
-#          author_name: ${{ env.GITHUB_USER }}
-#          author_email: ${{ env.GITHUB_EMAIL }}
 
 #      - name: Npm publish a new 'dev' version (romcal + all calendar bundles)
 #        env:
