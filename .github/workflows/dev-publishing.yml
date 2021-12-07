@@ -19,17 +19,17 @@ jobs:
       GITHUB_EMAIL: github-actions@github.com
 
     steps:
+      - name: TEST1
+        run: 'echo "Last commit: ${{ github.event.head_commit.message }}"'
+
+#      - name: TEST2
+#        run: 'echo ${{ !startsWith(github.event.head_commit.message, "ci:") }}'
+
       - name: Git checkout dev branch
         uses: actions/checkout@v2
         with:
           ref: commit-xp
           token: ${{ secrets.REPO_TOKEN }}
-
-      - name: TEST1
-        run: 'echo "Last commit: ${{ github.event.head_commit.message }}"'
-
-      - name: TEST2
-        run: 'echo ${{ !startsWith(github.event.head_commit.message, "ci:") }}'
 
       - name: Install node.js and npm
         uses: volta-cli/action@v1
