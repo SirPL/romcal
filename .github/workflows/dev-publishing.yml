@@ -3,7 +3,7 @@ name: Dev branch publishing
 on:
   push:
     branches:
-      - dev
+      - commit-xp
 
 jobs:
   dev_branch_publishing:
@@ -15,14 +15,14 @@ jobs:
 
     env:
       CI: true
-      GITHUB_USER: romcalproject
-      GITHUB_EMAIL: romcalproject@gmail.com
+#      GITHUB_USER: romcalproject
+#      GITHUB_EMAIL: romcalproject@gmail.com
 
     steps:
       - name: Git checkout dev branch
         uses: actions/checkout@v2
         with:
-          ref: dev
+          ref: commit-xp
 
       - name: Install node.js and npm
         uses: volta-cli/action@v1
@@ -56,14 +56,23 @@ jobs:
         id: package
 
       - name: Commit and tag the updated version
-        uses: EndBug/add-and-commit@v7
-        with:
-          message: 'ci: bump version to ${{ steps.package.outputs.version }}'
-          tag: 'v${{ steps.package.outputs.version }}'
-          author_name: ${{ env.GITHUB_USER }}
-          author_email: ${{ env.GITHUB_EMAIL }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "ci: bump version to ${{ steps.package.outputs.version }}"
+          git push
+#          git tag -a v${{ steps.package.outputs.version }}
 
-      - name: Npm publish a new 'dev' version (romcal + all calendar bundles)
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: node -r ts-node/register scripts/publish.ts
+#      - name: Commit and tag the updated version
+#        uses: EndBug/add-and-commit@v7
+#        with:
+#          message: 'ci: bump version to ${{ steps.package.outputs.version }}'
+#          tag: 'v${{ steps.package.outputs.version }}'
+#          author_name: ${{ env.GITHUB_USER }}
+#          author_email: ${{ env.GITHUB_EMAIL }}
+
+#      - name: Npm publish a new 'dev' version (romcal + all calendar bundles)
+#        env:
+#          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#        run: node -r ts-node/register scripts/publish.ts
