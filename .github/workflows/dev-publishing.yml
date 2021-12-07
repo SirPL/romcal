@@ -40,6 +40,10 @@ jobs:
           skip-commit: 'true'
           skip-tag:  'true'
 
+      - name: Read package.json
+        uses: culshaw/read-package-node-version-actions@v1
+        id: package
+
       - name: Display bumped version
         run: 'echo "New romcal version: ${{ steps.package.outputs.version }}"'
 
@@ -54,10 +58,6 @@ jobs:
 
       - name: Run tests
         run: npm run test:without-coverage
-
-      - name: Read package.json
-        uses: culshaw/read-package-node-version-actions@v1
-        id: package
 
       - name: Commit and tag the updated version
         run: |
