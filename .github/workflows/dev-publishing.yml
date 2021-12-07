@@ -11,7 +11,7 @@ jobs:
 
     environment: npm-publish
 
-    if: github.repository == 'romcal/romcal'
+    if: github.repository == 'romcal/romcal' && !startsWith(github.event.head_commit.message, 'ci:')
 
     env:
       CI: true
@@ -21,9 +21,6 @@ jobs:
     steps:
       - name: TEST1
         run: 'echo "Last commit: ${{ github.event.head_commit.message }}"'
-
-#      - name: TEST2
-#        run: 'echo ${{ !startsWith(github.event.head_commit.message, "ci:") }}'
 
       - name: Git checkout dev branch
         uses: actions/checkout@v2
