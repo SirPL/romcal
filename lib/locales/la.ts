@@ -638,6 +638,7 @@ export const locale: Locale = {
     ladislaus_i_of_hungary: 'S. Ladislai',
     lambert_of_maastricht_bishop: 'S. Lamberti, episcopi et martyris',
     laserian_of_leighlin_bishop: 'S. Laseriani, episcopi',
+    latroni: 'S. Latronis',
     laura_vicuna_virgin: 'B. Lauræ Vicuña, virginis',
     laurence_otoole_bishop: 'S. Laurentii O’Toole, episcopi',
     laurence_wang_bing_and_companions_martyrs: 'Ss. Laurentii Wang Bing, et sociorum, martyrum',
