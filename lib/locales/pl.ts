@@ -310,6 +310,7 @@ export const locale: Locale = {
     justin_martyr: 'Św. Justyna, męczennika',
     kinga_of_poland_virgin: 'Św. Kingi, dziewicy',
     ladislas_of_gielniow_priest: 'Bł. Władysława z Gielniowa, prezbitera',
+    latroni: 'Św. Łotra',
     laurence_wang_bing_and_companions_martyrs: 'Świętych męczenników Wawrzyńca Wang Binga i Towarzyszy',
     lawrence_bai_xiaoman_martyr: 'Św. Wawrzyńa Bai Xiaomana, męczennika',
     lawrence_of_brindisi_priest: 'Św. Wawrzyńca z Brindisi, prezbitera i doktora Kościoła',
